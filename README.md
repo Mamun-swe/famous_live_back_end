@@ -2,35 +2,14 @@
 
 ### Auth API's
 
-- [POST /api/auth/register ](http://github.com)
+- [POST /api/auth/register ]('./api-docs/Auth/Login.md')
 - [POST /api/auth/login ](http://github.com)
 - [GET /api/auth/me ](http://github.com)
 - [PUT /api/auth/logout ](http://github.com)
 
 ---
 
-Request body: 
-  {
-      "name": "",
-      "phone": ""
-  }
 
-Response body: 
-  {
-      "message": "Account successfully created"
-  }
-
-status code:
-Success: 201
-Error: 500 Internal Server Error
-Response body: 
-{
-    "success": false,
-    "message": [
-        "Path `name` is required.",
-        "Path `phone` is required."
-    ]
-}
 
 
 
