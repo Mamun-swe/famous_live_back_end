@@ -1,6 +1,6 @@
-#### Login into account
+#### Create new account
 
-Request body: 
+```Request body: 
   {
       "name": "",
       "phone": ""
@@ -21,4 +21,4 @@ Response body:
         "Path `name` is required.",
         "Path `phone` is required."
     ]
-}
+}```
