@@ -4,6 +4,13 @@
 
 [ [POST] /api/auth/register ]
 
+---
+
+http://github.com - automatic!
+[GitHub](http://github.com)
+
+---
+
 Request body: 
   {
       "name": "",
