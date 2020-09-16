@@ -12,3 +12,9 @@
 ### Admin API's
 
 - [GET /api/admin/users ](https://github.com/Mamun-swe/famous_live_back_end/blob/master/api-docs/Admin/User.md)
+
+---
+
+### User API's
+
+- [POST /api/user/follow ](https://github.com/Mamun-swe/famous_live_back_end/blob/master/api-docs/User/Follow.md)
