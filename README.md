@@ -3,6 +3,11 @@
 ### Auth API's
 
 - [POST /api/auth/register ](http://github.com)
+- [POST /api/auth/login ](http://github.com)
+- [GET /api/auth/me ](http://github.com)
+- [PUT /api/auth/logout ](http://github.com)
+
+---
 
 Request body: 
   {
