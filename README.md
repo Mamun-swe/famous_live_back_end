@@ -2,7 +2,7 @@
 
 ##### Auth API's
 
-* POST[/api/auth/register ](http://github.com)
+* [POST /api/auth/register ](http://github.com)
 
 Request body: 
   {
