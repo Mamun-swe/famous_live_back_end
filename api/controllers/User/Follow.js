@@ -1,8 +1,11 @@
 const Users = require('../../../models/users')
-const checkId = require('../../middleware/mongooseId')
 
-const UserFollow = async (req, res, next) => {
+const makeFollow = async (req, res, next) => {
     try {
+        if (!req.body) {
+            return res.status(422).json({ message: 'myid and followid is required' })
+        }
+        
         let { myid, followid } = req.body
 
         const createFollowing = await Users.findOneAndUpdate(
@@ -27,27 +30,6 @@ const UserFollow = async (req, res, next) => {
 }
 
 
-const following = async (req, res, next) => {
-    const { id } = req.params
-    try {
-
-        await checkId(id)
-        const meFollowing = await Users.findOne({ _id: id })
-            .populate({ path: 'following', select: 'name phone' })
-            .populate({ path: 'followers', select: 'name phone' })
-            .exec()
-        if (!meFollowing) {
-            return res.status(204).json('Not available')
-        }
-
-        res.status(200).json({ meFollowing })
-    } catch (error) {
-        next(error)
-    }
-}
-
-
 module.exports = {
-    UserFollow,
-    following
+    makeFollow
 }

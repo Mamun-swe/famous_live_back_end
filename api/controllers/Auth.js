@@ -49,7 +49,10 @@ const Login = async (req, res, next) => {
         let user = await User.findOne({ phone }).exec()
         if (user) {
             const token = await jwt.sign({ id: user._id, name: user.name, role: user.role }, 'SECRET', { expiresIn: '1d' })
-            const updateToken = await User.findOneAndUpdate({ _id: user._id }, { $set: { 'access_token': token } }, { new: true }).exec()
+            const updateToken = await User.findOneAndUpdate({ _id: user._id },
+                { $set: { 'access_token': token, status: 'online' } },
+                { new: true })
+                .exec()
             if (updateToken) {
                 return res.status(200).json({
                     message: "success",
@@ -101,7 +104,7 @@ const Logout = async (req, res, next) => {
 
         let user = await User.findOne({ $and: [{ _id: decode.id }, { role: decode.role }] })
         if (user) {
-            const updateToken = await User.findByIdAndUpdate({ _id: decode.id }, { $set: { 'access_token': null } })
+            const updateToken = await User.findByIdAndUpdate({ _id: decode.id }, { $set: { 'access_token': null, status: 'online' } })
             if (updateToken) {
                 return res.status(200).json({
                     message: true

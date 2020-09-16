@@ -33,6 +33,16 @@ const userSchema = new Schema({
         default: "user",
         enum: ["admin", "user"]
     },
+    status: {
+        type: String,
+        default: "offline",
+        enum: ["online", "offline"]
+    },
+    isLive: {
+        type: Boolean,
+        default: false,
+        enum: [true, false]
+    },
     access_token: {
         type: String,
         trim: true,

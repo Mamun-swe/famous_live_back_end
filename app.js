@@ -10,17 +10,15 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 app.use(cors())
 
-
 // Main Routes
 const authRoute = require("./api/routes/Auth")
 const userRoute = require("./api/routes/User")
-// const adminRoute = require("./api/routes/admin")
-// const merchantRoute = require("./api/routes/merchant")
+const adminRoute = require("./api/routes/Admin")
 
 // API URL's
 app.use("/api/auth", authRoute)
 app.use("/api/user", userRoute)
-// app.use("/dhakaboss/ticketing/api/merchant", merchantRoute)
+app.use("/api/admin", adminRoute)
 
 app.use((req, res, next) => {
     let error = new Error('404 page Not Found')
