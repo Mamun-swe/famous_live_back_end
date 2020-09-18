@@ -2,13 +2,17 @@ const express = require("express")
 const cors = require("cors")
 const morgan = require("morgan")
 const bodyParser = require("body-parser")
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
+const fileUpload = require('express-fileupload')
 
 const app = express()
 app.use(morgan('dev'))
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 app.use(cors())
+app.use(fileUpload())
+
+app.use('/uploads/images', express.static('uploads/images/'))
 
 // Main Routes
 const authRoute = require("./api/routes/Auth")

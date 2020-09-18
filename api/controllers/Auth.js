@@ -1,5 +1,6 @@
 const User = require('../../models/users')
 const jwt = require("jsonwebtoken")
+const rootURl = require('../../utils/rootURL')
 
 // Account Register
 const Register = async (req, res, next) => {
@@ -81,14 +82,42 @@ const MyInfo = async (req, res, next) => {
         let id = decode.id
 
         const my_info = await User.findOne({ _id: id })
-            .populate({ path: 'following', select: 'name phone' })
-            .populate({ path: 'followers', select: 'name phone' })
+            .populate({ path: 'following', select: 'name phone image' })
+            .populate({ path: 'followers', select: 'name phone image' })
             .exec()
         if (!my_info) {
             return res.status(204).json('Not available')
         }
 
-        res.status(200).json({ my_info })
+        const response = {
+            id: my_info._id,
+            name: my_info.name,
+            phone: my_info.phone,
+            role: my_info.role,
+            status: my_info.status,
+            isLive: my_info.isLive,
+            mainCoinBalane: my_info.mainCoinBalane,
+            presentCoinBalance: my_info.presentCoinBalance,
+            userLevel: my_info.userLevel,
+            image: rootURl + "uploads/images/" + my_info.image,
+            followers: my_info.followers.map(follower => {
+                return {
+                    id: follower.id,
+                    name: follower.name,
+                    phone: follower.phone,
+                    image: rootURl + "uploads/images/" + follower.image
+                }
+            }),
+            following: my_info.following.map(follow => {
+                return {
+                    id: follow.id,
+                    name: follow.name,
+                    phone: follow.phone,
+                    image: rootURl + "uploads/images/" + follow.image
+                }
+            })
+        }
+        res.status(200).json(response)
 
     } catch (error) {
         next(error)
@@ -104,7 +133,11 @@ const Logout = async (req, res, next) => {
 
         let user = await User.findOne({ $and: [{ _id: decode.id }, { role: decode.role }] })
         if (user) {
-            const updateToken = await User.findByIdAndUpdate({ _id: decode.id }, { $set: { 'access_token': null, status: 'online' } })
+            const updateToken = await User.findByIdAndUpdate(
+                { _id: decode.id },
+                {
+                    $set: { 'access_token': null, status: 'offline' }
+                })
             if (updateToken) {
                 return res.status(200).json({
                     message: true

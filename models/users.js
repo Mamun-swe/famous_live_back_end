@@ -20,11 +20,11 @@ const userSchema = new Schema({
             message: props => `${props.value} is not a valid phone number!`
         },
     },
-    followers:[{
+    followers: [{
         type: Schema.Types.ObjectId,
         ref: 'User'
     }],
-    following:[{
+    following: [{
         type: Schema.Types.ObjectId,
         ref: 'User'
     }],
@@ -42,6 +42,22 @@ const userSchema = new Schema({
         type: Boolean,
         default: false,
         enum: [true, false]
+    },
+    mainCoinBalane: {
+        type: Number,
+        default: 0
+    },
+    presentCoinBalance: {
+        type: Number,
+        default: 0
+    },
+    userLevel: {
+        type: Number,
+        default: 0
+    },
+    image: {
+        type: String,
+        default: null
     },
     access_token: {
         type: String,
