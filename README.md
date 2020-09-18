@@ -19,3 +19,4 @@
 
 - [POST /api/user/follow ](https://github.com/Mamun-swe/famous_live_back_end/blob/master/api-docs/User/Follow.md)
 - [PUT /api/user/update-profile-image/:id ](https://github.com/Mamun-swe/famous_live_back_end/blob/master/api-docs/User/Profile.md)
+- [PUT /api/user/all-users ](https://github.com/Mamun-swe/famous_live_back_end/blob/master/api-docs/User/AllUser.md)

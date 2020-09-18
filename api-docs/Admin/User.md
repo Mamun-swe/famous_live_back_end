@@ -8,46 +8,34 @@
 
 Response body: 
 {
-    "users": [
+    "results": [
         {
-            "followers": [],
-            "following": [
-                {
-                    "_id": "5f61b642a9dab92aeb4956ec",
-                    "name": "Khayer",
-                    "phone": "01533592611"
-                }
-            ],
-            "_id": "5f61b636a9dab92aeb4956eb",
+            "id": "5f64a9dbf292b055702eb88b",
             "name": "Mamun",
-            "phone": "01533592610"
-        },
-        {
+            "phone": "01533592610",
+            "role": "user",
+            "status": "offline",
+            "isLive": false,
+            "mainCoinBalane": 0,
+            "presentCoinBalance": 0,
+            "userLevel": 0,
+            "image": "http://localhost:3000/uploads/images/1600443419630.2.jpg",
             "followers": [
                 {
-                    "_id": "5f61b636a9dab92aeb4956eb",
-                    "name": "Mamun",
-                    "phone": "01533592610"
+                    "id": "5f64a9e6f292b055702eb88c",
+                    "name": "Sabbir",
+                    "phone": "01533592611",
+                    "image": "http://localhost:3000/uploads/images/1600444072388.IMG_20200914_000208.jpg"
                 }
             ],
-            "following": [],
-            "_id": "5f61b642a9dab92aeb4956ec",
-            "name": "Khayer",
-            "phone": "01533592611"
-        },
-        {
-            "followers": [],
-            "following": [],
-            "_id": "5f61b650a9dab92aeb4956ed",
-            "name": "Alif",
-            "phone": "01533592612"
-        },
-        {
-            "followers": [],
-            "following": [],
-            "_id": "5f61bbb4aa00763814d37d34",
-            "name": "admin",
-            "phone": "01711111112"
+            "following": [
+                {
+                    "id": "5f64a9e6f292b055702eb88c",
+                    "name": "Sabbir",
+                    "phone": "01533592611",
+                    "image": "http://localhost:3000/uploads/images/1600444072388.IMG_20200914_000208.jpg"
+                }
+            ]
         }
     ]
 }
