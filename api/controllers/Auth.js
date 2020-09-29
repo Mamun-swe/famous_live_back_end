@@ -1,6 +1,7 @@
 const User = require('../../models/users')
 const jwt = require("jsonwebtoken")
 const rootURl = require('../../utils/rootURL')
+const { use } = require('../routes/User')
 
 // Account Register
 const Register = async (req, res, next) => {
@@ -82,12 +83,29 @@ const MyInfo = async (req, res, next) => {
         let id = decode.id
 
         const my_info = await User.findOne({ _id: id })
-            .populate({ path: 'following', select: 'name phone image' })
-            .populate({ path: 'followers', select: 'name phone image' })
+            .populate({ path: 'following', select: 'name phone isLive status userLevel image' })
+            .populate({ path: 'followers', select: 'name phone isLive status userLevel image' })
             .exec()
         if (!my_info) {
             return res.status(204).json('Not available')
         }
+
+        // on live users
+        const liveArray = []
+        const liveUsers = my_info.following.map(follow => {
+            if (follow.isLive === false) {
+                const data = {
+                    id: follow.id,
+                    name: follow.name,
+                    phone: follow.phone,
+                    isLive: follow.isLive,
+                    status: follow.status,
+                    userLevel: follow.userLevel,
+                    image: rootURl + "uploads/images/" + follow.image
+                }
+                return liveArray.push(data)
+            }
+        })
 
         const response = {
             id: my_info._id,
@@ -105,6 +123,9 @@ const MyInfo = async (req, res, next) => {
                     id: follower.id,
                     name: follower.name,
                     phone: follower.phone,
+                    isLive: follower.isLive,
+                    status: follower.status,
+                    userLevel: follower.userLevel,
                     image: rootURl + "uploads/images/" + follower.image
                 }
             }),
@@ -113,9 +134,13 @@ const MyInfo = async (req, res, next) => {
                     id: follow.id,
                     name: follow.name,
                     phone: follow.phone,
+                    isLive: follow.isLive,
+                    status: follow.status,
+                    userLevel: follow.userLevel,
                     image: rootURl + "uploads/images/" + follow.image
                 }
-            })
+            }),
+            isLiveUsers: liveArray
         }
         res.status(200).json(response)
 

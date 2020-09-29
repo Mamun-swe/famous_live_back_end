@@ -7,24 +7,71 @@
 
 
 Response body: 
-  {
+    {
       "my_info": {
-          "followers": [],
-          "following": [],
-          "role": "user",
-          "status": "online",
-          "isLive": false,
-          "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
-          .eyJpZCI6IjVmNjFjNGQzYTAzM2VmNDFmYTc1MTA0MSIsIm5hbWUiOiJNYW11biIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjAwMjQ0NTM2LCJleHAiOjE2MDAzMzA5MzZ9
-          .MQvTafbRGlI8sQN1BRLH4GlQPCtwDoRQdEb_TyTY_sY",
-          "_id": "5f61c4d3a033ef41fa751041",
-          "name": "Mamun",
-          "phone": "01533592610",
-          "createdAt": "2020-09-16T07:54:59.389Z",
-          "updatedAt": "2020-09-16T08:22:16.748Z",
-          "__v": 0
-      }
-  }
+            "id": "5f64a9dbf292b055702eb88b",
+            "name": "Mamun",
+            "phone": "01533592610",
+            "role": "user",
+            "status": "online",
+            "isLive": false,
+            "mainCoinBalane": 0,
+            "presentCoinBalance": 0,
+            "userLevel": 0,
+            "image": "http://localhost:3000/uploads/images/1600443419630.2.jpg",
+            "followers": [
+                {
+                    "id": "5f64a9e6f292b055702eb88c",
+                    "name": "Sabbir",
+                    "phone": "01533592611",
+                    "isLive": false,
+                    "status": "online",
+                    "userLevel": 0,
+                    "image": "http://localhost:3000/uploads/images/1600444072388.IMG_20200914_000208.jpg"
+                }
+            ],
+            "following": [
+                {
+                    "id": "5f64a9e6f292b055702eb88c",
+                    "name": "Sabbir",
+                    "phone": "01533592611",
+                    "isLive": false,
+                    "status": "online",
+                    "userLevel": 0,
+                    "image": "http://localhost:3000/uploads/images/1600444072388.IMG_20200914_000208.jpg"
+                },
+                {
+                    "id": "5f7377ea180fac5beaf0718d",
+                    "name": "Hasan",
+                    "phone": "01533592612",
+                    "isLive": false,
+                    "status": "offline",
+                    "userLevel": 0,
+                    "image": "http://localhost:3000/uploads/images/null"
+                }
+            ],
+            "isLiveUsers": [
+                {
+                    "id": "5f64a9e6f292b055702eb88c",
+                    "name": "Sabbir",
+                    "phone": "01533592611",
+                    "isLive": false,
+                    "status": "online",
+                    "userLevel": 0,
+                    "image": "http://localhost:3000/uploads/images/1600444072388.IMG_20200914_000208.jpg"
+                },
+                {
+                    "id": "5f7377ea180fac5beaf0718d",
+                    "name": "Hasan",
+                    "phone": "01533592612",
+                    "isLive": false,
+                    "status": "offline",
+                    "userLevel": 0,
+                    "image": "http://localhost:3000/uploads/images/null"
+                }
+            ]
+        }
+    }
 
 status code:
 Success: 200
