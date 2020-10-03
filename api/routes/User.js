@@ -15,5 +15,6 @@ router.post('/share-coin', Authenticate.UserPermission, coinShareController.shar
 router.put('/update-coin', Authenticate.UserPermission, coinShareController.updateCoin)
 
 router.post('/name-change', Authenticate.UserPermission, accountController.nameUpdateRequest)
+router.delete('/delete-account', Authenticate.UserPermission, accountController.deleteMyAccount)
 
 module.exports = router

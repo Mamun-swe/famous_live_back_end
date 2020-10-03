@@ -1,5 +1,6 @@
 const Users = require('../../../models/users')
 const jwt = require('jsonwebtoken')
+const User = require('../../../models/users')
 
 const nameUpdateRequest = async (req, res, next) => {
 
@@ -27,7 +28,25 @@ const nameUpdateRequest = async (req, res, next) => {
 }
 
 
+const deleteMyAccount = async (req, res, next) => {
+    try {
+        // decode token
+        const splitToken = await req.headers.authorization.split(' ')[1]
+        const decode = await jwt.verify(splitToken, 'SECRET')
+
+        const deleteAccount = await User.findOneAndDelete({ _id: decode.id }).exec()
+        if (!deleteAccount) {
+            return res.json({ status: false, message: 'Account delete failed' })
+        }
+
+        res.json({ status: true, message: 'Successfully account deleted.' })
+
+    } catch (error) {
+        if (error) next(error)
+    }
+}
 
 module.exports = {
-    nameUpdateRequest
+    nameUpdateRequest,
+    deleteMyAccount
 }

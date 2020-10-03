@@ -32,3 +32,7 @@
 ### Name Change Request API
 
 - [POST /api/user/name-change ](https://github.com/Mamun-swe/famous_live_back_end/blob/master/api-docs/User/NameChange.md)
+
+### Delete Account
+
+- [DELETE /api/user/delete-account ](https://github.com/Mamun-swe/famous_live_back_end/blob/master/api-docs/User/DeleteAccount.md)
