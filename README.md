@@ -28,3 +28,7 @@
 ### Coin Update API
 
 - [PUT /api/user/update-coin ](https://github.com/Mamun-swe/famous_live_back_end/blob/master/api-docs/User/CoinUpdate.md)
+
+### Name Change Request API
+
+- [POST /api/user/name-change ](https://github.com/Mamun-swe/famous_live_back_end/blob/master/api-docs/User/NameChange.md)
