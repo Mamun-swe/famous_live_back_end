@@ -1,7 +1,6 @@
 const User = require('../../models/users')
 const jwt = require("jsonwebtoken")
 const rootURl = require('../../utils/rootURL')
-const { use } = require('../routes/User')
 
 // Account Register
 const Register = async (req, res, next) => {

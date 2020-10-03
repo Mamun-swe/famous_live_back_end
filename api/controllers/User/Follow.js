@@ -31,17 +31,9 @@ const makeFollow = async (req, res, next) => {
 }
 
 
-// Live in from follower
-const liveFromFollowingList = async(req, res, next) => {
-    try {
-        res.status(200).json({message: 'All live people from my follwer list'})
-    } catch (error) {
-        next(error)
-    }
-}
+
 
 
 module.exports = {
-    makeFollow,
-    liveFromFollowingList
+    makeFollow
 }
