@@ -27,4 +27,4 @@
 
 ### Coin Update API
 
-- [PUT /api/user/update-coin ](https://github.com/Mamun-swe/famous_live_back_end/blob/master/api-docs/User/CoinShare.md)
+- [PUT /api/user/update-coin ](https://github.com/Mamun-swe/famous_live_back_end/blob/master/api-docs/User/CoinUpdate.md)

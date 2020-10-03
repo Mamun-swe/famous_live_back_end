@@ -1,4 +1,4 @@
-#### Share Coin with Another User
+#### Update Coin
 
 ```Request Header: 
     Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
@@ -7,13 +7,13 @@
     
     Request body: 
     {
-        "shareId": "5f78c4d1182ef974cc338e68",
-        "coinAmount": "10"
+        "coin": "10"
     }
 
     Response body: 
     {
-        "message": "10 Coin successfully shared"
+        "status": true,
+        "message": "Successfully coin updated."
     }
 
 status code:
@@ -22,5 +22,3 @@ Error: 501
 {
     "message": "unauthorized request"
 }
-
-
