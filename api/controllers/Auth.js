@@ -139,7 +139,8 @@ const MyInfo = async (req, res, next) => {
                     image: rootURl + "uploads/images/" + follow.image
                 }
             }),
-            isLiveUsers: liveArray
+            isLiveUsers: liveArray,
+            block_users: my_info.block_users
         }
         res.status(200).json(response)
 

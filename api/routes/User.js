@@ -6,6 +6,7 @@ const followController = require('../controllers/User/Follow')
 const profileController = require('../controllers/User/Profile')
 const coinShareController = require('../controllers/User/CoinShare')
 const accountController = require('../controllers/User/Account')
+const blockController = require('../controllers/User/BlockUser')
 
 router.get('/all-users', Authenticate.UserPermission, AllUsersController.getAllUsers)
 router.post('/follow', Authenticate.UserPermission, followController.makeFollow)
@@ -17,5 +18,7 @@ router.put('/update-coin', Authenticate.UserPermission, coinShareController.upda
 
 router.post('/name-change', Authenticate.UserPermission, accountController.nameUpdateRequest)
 router.delete('/delete-account', Authenticate.UserPermission, accountController.deleteMyAccount)
+
+router.post('/block', Authenticate.UserPermission, blockController.blockUser)
 
 module.exports = router

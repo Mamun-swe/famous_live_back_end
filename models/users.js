@@ -34,6 +34,10 @@ const userSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User'
     }],
+    block_users: [{
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    }],
     role: {
         type: String,
         default: "user",
