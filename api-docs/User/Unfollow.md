@@ -1,4 +1,4 @@
-#### Follow Another User
+#### Unfollow Another User
 
 ```Request Header: 
     Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
@@ -7,17 +7,18 @@
     
     Request body: 
     {
-        "followid": "5f61b642a9dab92aeb4956ec"
+        "unfollowId": "5f78d8b5a742e89bb69ebd1c"
     }
 
     Response body: 
     {
-        "message": "success"
+        "status": true,
+        "message": "Successfully unfollow"
     }
 
 status code:
 Success: 200
-Error: 501
+Error: 200
 {
-    "message": "unauthorized request"
+    "message": "This user is not in your follow list"
 }
