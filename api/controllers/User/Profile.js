@@ -1,4 +1,5 @@
 const User = require('../../../models/users')
+const jwt = require('jsonwebtoken')
 
 
 const updateProfileImage = async (req, res, next) => {
@@ -26,7 +27,7 @@ const updateProfileImage = async (req, res, next) => {
         }
 
         const updateProfileImg = await User.findOneAndUpdate(
-            { _id: id },
+            { _id: decode.id },
             { $set: { 'image': profile_image } },
             { new: true }
         ).exec()
@@ -37,6 +38,7 @@ const updateProfileImage = async (req, res, next) => {
         return res.status(200).json({ message: true })
 
     } catch (error) {
+        console.log(error.message);
         next(error)
     }
 }

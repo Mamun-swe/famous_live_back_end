@@ -11,7 +11,7 @@ const blockController = require('../controllers/User/BlockUser')
 router.get('/all-users', Authenticate.UserPermission, AllUsersController.getAllUsers)
 router.post('/follow', Authenticate.UserPermission, followController.makeFollow)
 router.post('/unfollow', Authenticate.UserPermission, followController.unFollowUser)
-router.put('/update-profile-image/:id', Authenticate.UserPermission, profileController.updateProfileImage)
+router.put('/update-profile-image', Authenticate.UserPermission, profileController.updateProfileImage)
 
 router.post('/share-coin', Authenticate.UserPermission, coinShareController.shareCoin)
 router.put('/update-coin', Authenticate.UserPermission, coinShareController.updateCoin)
