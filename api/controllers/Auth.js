@@ -160,7 +160,7 @@ const Logout = async (req, res, next) => {
             const updateToken = await User.findByIdAndUpdate(
                 { _id: decode.id },
                 {
-                    $set: { 'access_token': null, status: 'offline' }
+                    $set: { 'access_token': null, status: 'offline', isLive: 'false' }
                 })
             if (updateToken) {
                 return res.status(200).json({
