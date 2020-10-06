@@ -41,3 +41,8 @@
 ### Block User
 
 - [POST /api/user/block ](https://github.com/Mamun-swe/famous_live_back_end/blob/master/api-docs/User/Block.md)
+
+### Live start & stop
+
+- [PUT /api/user/go-live ](https://github.com/Mamun-swe/famous_live_back_end/blob/master/api-docs/User/GoLive.md)
+- [PUT /api/user/stop-live ](https://github.com/Mamun-swe/famous_live_back_end/blob/master/api-docs/User/StopLive.md)

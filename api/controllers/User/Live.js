@@ -16,7 +16,7 @@ const startLive = async (req, res, next) => {
             return res.status(500).json({ success: false, message: "Internal server error" })
         }
 
-        res.status(200).json({ success: true, message: "Success live running" })
+        res.status(200).json({ success: true, message: "Successfully live running" })
 
     } catch (error) {
         if (error) {
