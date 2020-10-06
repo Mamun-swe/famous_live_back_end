@@ -7,6 +7,7 @@ const profileController = require('../controllers/User/Profile')
 const coinShareController = require('../controllers/User/CoinShare')
 const accountController = require('../controllers/User/Account')
 const blockController = require('../controllers/User/BlockUser')
+const liveController = require('../controllers/User/Live')
 
 router.get('/all-users', Authenticate.UserPermission, AllUsersController.getAllUsers)
 router.post('/follow', Authenticate.UserPermission, followController.makeFollow)
@@ -20,5 +21,8 @@ router.post('/name-change', Authenticate.UserPermission, accountController.nameU
 router.delete('/delete-account', Authenticate.UserPermission, accountController.deleteMyAccount)
 
 router.post('/block', Authenticate.UserPermission, blockController.blockUser)
+
+router.put('/go-live', Authenticate.UserPermission, liveController.startLive)
+router.put('/stop-live', Authenticate.UserPermission, liveController.closeLive)
 
 module.exports = router
