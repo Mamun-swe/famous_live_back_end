@@ -92,7 +92,7 @@ const MyInfo = async (req, res, next) => {
         // on live users
         const liveArray = []
         const liveUsers = my_info.following.map(follow => {
-            if (follow.isLive === false) {
+            if (follow.isLive === true) {
                 const data = {
                     id: follow.id,
                     name: follow.name,
