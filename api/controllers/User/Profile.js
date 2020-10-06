@@ -1,13 +1,13 @@
 const User = require('../../../models/users')
-const checkId = require('../../middleware/mongooseId')
 
 
 const updateProfileImage = async (req, res, next) => {
-    let { id } = req.params
-
     try {
-        await checkId(id)
-        let user = await User.findOne({ _id: id }).exec()
+        // decode token
+        const splitToken = await req.headers.authorization.split(' ')[1]
+        const decode = await jwt.verify(splitToken, 'SECRET')
+
+        let user = await User.findOne({ _id: decode.id }).exec()
         if (!user) {
             return res.status(204).json({ message: 'User not found' })
         }
