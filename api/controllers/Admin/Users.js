@@ -104,9 +104,33 @@ const nameUpdate = async (req, res, next) => {
     }
 }
 
+// Give Coin
+const giveCoin = async (req, res, next) => {
+    let { id } = req.params
+    let { coin_amount } = req.body
+    try {
+        const userCoinUpdate = await Users.findOneAndUpdate(
+            { _id: id },
+            { $inc: { mainCoinBalane: coin_amount, presentCoinBalance: coin_amount } })
+            .exec()
+
+        if (!userCoinUpdate) {
+            return res.json({ status: false, message: 'Coin give failed' })
+        }
+
+        res.json({ status: true, message: 'Coin give success.' })
+    } catch (error) {
+        if (error) {
+            next(error)
+        }
+    }
+}
+
+
 module.exports = {
     allUsers,
     updateAccountStatus,
     nameUpdateRequests,
-    nameUpdate
+    nameUpdate,
+    giveCoin
 }
