@@ -1,27 +1,112 @@
 const jwt = require('jsonwebtoken')
 const Users = require('../../../models/users')
+const rootURl = require('../../../utils/rootURL')
 
+
+// Fetch All Users
 const allUsers = async (req, res, next) => {
     try {
-        const token = req.headers.authorization.split(' ')[1]
-        const decode = jwt.verify(token, 'SECRET')
-        let id = decode.id
-
-        const users = await Users.find({ _id: { $nin: [id] } }, { name: 1, phone: 1 })
-            .populate({ path: 'following', select: 'name phone' })
-            .populate({ path: 'followers', select: 'name phone' })
-            .exec()
+        const users = await Users.find(
+            { "role": { $nin: ['admin'] } },
+            {
+                name: 1,
+                phone: 1,
+                account_status: 1,
+                image: 1
+            }
+        ).exec()
         if (!users) {
             return res.status(204).json('Not available')
         }
 
-        res.status(200).json({ users })
+        const response = {
+            all_users: users.map(user => {
+                if (user.image) {
+                    return {
+                        id: user.id,
+                        name: user.name,
+                        phone: user.phone,
+                        account_status: user.account_status,
+                        image: rootURl + "uploads/images/" + user.image,
+                    }
+                }
+
+                return {
+                    id: user.id,
+                    name: user.name,
+                    phone: user.phone,
+                    account_status: user.account_status,
+                    image: null,
+                }
+
+            })
+        }
+        res.status(200).json({ users: response.all_users })
     } catch (error) {
-        // next(error)
-        console.log(error);
+        next(error)
+    }
+}
+
+
+// Update Account Status
+const updateAccountStatus = async (req, res, next) => {
+    let { id } = req.params
+    let { account_status } = req.body
+    try {
+        const updateUser = await Users.findOneAndUpdate({ _id: id },
+            { $set: { 'account_status': account_status } },
+            { new: true })
+            .exec()
+
+        if (!updateUser) {
+            return res.status(200).json({ message: "failed" })
+        }
+        res.status(200).json({ message: "success" })
+
+    } catch (error) {
+        if (error) {
+            next(error)
+        }
+    }
+}
+
+// Requested users for update name
+const nameUpdateRequests = async (req, res, next) => {
+    try {
+        const requests = await Users.find({ new_name: { $nin: [null, ""] } }, { name: 1, new_name: 1 }).exec()
+        res.status(200).json({ requests })
+    } catch (error) {
+        if (error) {
+            next(error)
+        }
+    }
+}
+
+// Name Update
+const nameUpdate = async (req, res, next) => {
+    let { id } = req.params
+    let { new_name } = req.body
+
+    try {
+        const result = await Users.findOneAndUpdate({ _id: id },
+            { $set: { 'name': new_name, new_name: null } },
+            { new: true })
+            .exec()
+
+        if (!result) {
+            return res.status(200).json({ message: "failed" })
+        }
+        res.status(200).json({ message: "success" })
+    } catch (error) {
+        if (error) {
+            next(error)
+        }
     }
 }
 
 module.exports = {
-    allUsers
+    allUsers,
+    updateAccountStatus,
+    nameUpdateRequests,
+    nameUpdate
 }
