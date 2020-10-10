@@ -60,13 +60,13 @@ const Login = async (req, res, next) => {
                     token
                 })
             }
-            return res.status(204).json({
+            return res.json({
                 message: "Failed to login"
-            })
+            }).status(204)
         } else {
-            return res.status(204).json({
+            return res.json({
                 message: "Failed to login"
-            })
+            }).status(204)
         }
     } catch (error) {
         next(error)
