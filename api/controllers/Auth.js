@@ -155,7 +155,7 @@ const Logout = async (req, res, next) => {
         const token = req.headers.authorization.split(' ')[1]
         const decode = jwt.verify(token, 'SECRET')
 
-        let user = await User.findOne({ $and: [{ _id: decode.id }, { role: decode.role }] })
+        let user = await User.findOne({ _id: decode.id })
         if (user) {
             const updateToken = await User.findByIdAndUpdate(
                 { _id: decode.id },
@@ -171,6 +171,7 @@ const Logout = async (req, res, next) => {
         return res.status(422).json({ message: "Unauthorized" })
     } catch (error) {
         next(error)
+        console.log(error.message);
     }
 }
 
