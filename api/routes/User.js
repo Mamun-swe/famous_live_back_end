@@ -17,7 +17,7 @@ router.put('/update-profile-image', Authenticate.UserPermission, profileControll
 router.post('/share-coin', Authenticate.UserPermission, coinShareController.shareCoin)
 router.put('/update-coin', Authenticate.UserPermission, coinShareController.updateCoin)
 
-router.post('/name-change', Authenticate.UserPermission, accountController.nameUpdateRequest)
+router.post('/name-change', Authenticate.UserPermission, accountController.nameUpdate)
 router.delete('/delete-account', Authenticate.UserPermission, accountController.deleteMyAccount)
 
 router.post('/block', Authenticate.UserPermission, blockController.blockUser)
