@@ -2,7 +2,7 @@ const Users = require('../../../models/users')
 const jwt = require('jsonwebtoken')
 const User = require('../../../models/users')
 
-const nameUpdateRequest = async (req, res, next) => {
+const nameUpdate = async (req, res, next) => {
 
     let { newName } = req.body
     try {
@@ -12,15 +12,15 @@ const nameUpdateRequest = async (req, res, next) => {
 
         const updateName = await Users.findOneAndUpdate(
             { _id: decode.id },
-            { $set: { new_name: newName } },
+            { $set: { name: newName } },
             { new: true }
         ).exec()
 
         if (!updateName) {
-            return res.json({ status: false, message: 'Name update request failed.' })
+            return res.json({ status: false, message: 'Name update failed.' })
         }
 
-        res.json({ status: true, message: 'Your request has been send to admin.' })
+        res.json({ status: true, message: 'Successfully name updated.' })
 
     } catch (error) {
         if (error) next(error)
@@ -47,6 +47,6 @@ const deleteMyAccount = async (req, res, next) => {
 }
 
 module.exports = {
-    nameUpdateRequest,
+    nameUpdate,
     deleteMyAccount
 }
