@@ -70,42 +70,9 @@ const updateAccountStatus = async (req, res, next) => {
     }
 }
 
-// Requested users for update name
-const nameUpdateRequests = async (req, res, next) => {
-    try {
-        const requests = await Users.find({ new_name: { $nin: [null, ""] } }, { name: 1, new_name: 1 }).exec()
-        res.status(200).json({ requests })
-    } catch (error) {
-        if (error) {
-            next(error)
-        }
-    }
-}
 
-// Name Update
-const nameUpdate = async (req, res, next) => {
-    let { id } = req.params
-    let { new_name } = req.body
-
-    try {
-        const result = await Users.findOneAndUpdate({ _id: id },
-            { $set: { 'name': new_name, new_name: null } },
-            { new: true })
-            .exec()
-
-        if (!result) {
-            return res.status(200).json({ message: "failed" })
-        }
-        res.status(200).json({ message: "success" })
-    } catch (error) {
-        if (error) {
-            next(error)
-        }
-    }
-}
-
-// Give Coin
-const giveCoin = async (req, res, next) => {
+// Give Daimond
+const giveDaimond = async (req, res, next) => {
     let { id } = req.params
     let { coin_amount } = req.body
     try {
@@ -130,7 +97,5 @@ const giveCoin = async (req, res, next) => {
 module.exports = {
     allUsers,
     updateAccountStatus,
-    nameUpdateRequests,
-    nameUpdate,
-    giveCoin
+    giveDaimond
 }

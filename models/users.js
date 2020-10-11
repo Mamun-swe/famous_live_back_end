@@ -69,11 +69,6 @@ const userSchema = new Schema({
         type: String,
         default: null
     },
-    account_status: {
-        type: String,
-        default: "pending",
-        enum: ["pending", "confirmed", "blocked"]
-    },
     access_token: {
         type: String,
         trim: true,

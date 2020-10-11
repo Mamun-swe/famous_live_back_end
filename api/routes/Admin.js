@@ -8,8 +8,6 @@ router.get('/dashboard', Authenticate.AdminPermission, DashboardController.count
 
 router.get('/users', Authenticate.AdminPermission, userController.allUsers)
 router.put('/user/:id/update-status', Authenticate.AdminPermission, userController.updateAccountStatus)
-router.get('/users/name/update/requests', Authenticate.AdminPermission, userController.nameUpdateRequests)
-router.put('/user/:id/update-name', Authenticate.AdminPermission, userController.nameUpdate)
-router.put('/user/:id/give-coin', Authenticate.AdminPermission, userController.giveCoin)
+router.put('/user/:id/give-daimond', Authenticate.AdminPermission, userController.giveDaimond)
 
 module.exports = router

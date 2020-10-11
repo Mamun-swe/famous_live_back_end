@@ -47,7 +47,7 @@ const Register = async (req, res, next) => {
 const Login = async (req, res, next) => {
     let { phone } = req.body
     try {
-        let user = await User.findOne({ $and: [{ phone }, { account_status: "confirmed" }] }).exec()
+        let user = await User.findOne({ phone }).exec()
         if (user) {
             const token = await jwt.sign({ id: user._id, name: user.name, role: user.role }, 'SECRET', { expiresIn: '1d' })
             const updateToken = await User.findOneAndUpdate({ _id: user._id },

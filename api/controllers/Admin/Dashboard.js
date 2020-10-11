@@ -3,11 +3,10 @@ const Users = require('../../../models/users')
 const countAllTypesUser = async (req, res, next) => {
     try {
         const usersTotal = await Users.find({ role: 'user' }).count().exec()
-        const updateRequests = await Users.find({ new_name: { $nin: [null, ""] } }).count().exec()
-        if (!usersTotal && !updateRequests) {
+        if (!usersTotal) {
             return res.json({ status: false, message: 'No result found' })
         }
-        res.status(200).json({ status: true, usersTotal, updateRequests })
+        res.status(200).json({ status: true, usersTotal })
 
     } catch (error) {
         if (error) {
