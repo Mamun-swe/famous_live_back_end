@@ -24,6 +24,8 @@ const getAllUsers = async (req, res, next) => {
                 isLive: 1,
                 status: 1,
                 userLevel: 1,
+                mainCoinBalane: 1,
+                presentCoinBalance: 1,
                 image: 1
             }
         ).exec()
@@ -40,6 +42,8 @@ const getAllUsers = async (req, res, next) => {
                     status: user.status,
                     isLive: user.isLive,
                     userLevel: user.userLevel,
+                    mainCoinBalane: user.mainCoinBalane,
+                    presentCoinBalance: user.presentCoinBalance,
                     image: rootURl + "uploads/images/" + user.image,
                 }
             })
