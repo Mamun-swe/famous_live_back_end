@@ -27,6 +27,8 @@ const allUsers = async (req, res, next) => {
                         name: user.name,
                         phone: user.phone,
                         account_status: user.account_status,
+                        mainCoinBalane: user.mainCoinBalane,
+                        presentCoinBalance: user.presentCoinBalance,
                         image: rootURl + "uploads/images/" + user.image,
                     }
                 }
