@@ -63,6 +63,11 @@ const userSchema = new Schema({
         type: String,
         default: null
     },
+    account_status: {
+        type: String,
+        default: "confirmed",
+        enum: ["blocked", "confirmed"]
+    },
     access_token: {
         type: String,
         trim: true,
